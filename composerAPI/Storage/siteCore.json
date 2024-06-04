@@ -1,0 +1,56 @@
+[
+    {
+        "id": "a92cfb7fcf5e35cd",
+        "type": "tab",
+        "label": "Site Core",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bbad7b18e03993de",
+        "type": "debug",
+        "z": "a92cfb7fcf5e35cd",
+        "name": "debug 272",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 663.1111373901367,
+        "y": 257.1111145019531,
+        "wires": []
+    },
+    {
+        "id": "0f17b146c589cee8",
+        "type": "inject",
+        "z": "a92cfb7fcf5e35cd",
+        "name": "Site Core",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello from Site Core",
+        "payloadType": "str",
+        "x": 328.9999694824219,
+        "y": 230.11112022399902,
+        "wires": [
+            [
+                "bbad7b18e03993de"
+            ]
+        ]
+    }
+]

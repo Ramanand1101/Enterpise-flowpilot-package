@@ -1,0 +1,56 @@
+[
+    {
+        "id": "4990af63077dd6ee",
+        "type": "tab",
+        "label": "Bloom Reach",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "58291c1768957077",
+        "type": "debug",
+        "z": "4990af63077dd6ee",
+        "name": "debug 274",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 689.111083984375,
+        "y": 227.11109924316406,
+        "wires": []
+    },
+    {
+        "id": "5f30ffc94fd6b113",
+        "type": "inject",
+        "z": "4990af63077dd6ee",
+        "name": "Bloom Reach",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello from Bloom Reach",
+        "payloadType": "str",
+        "x": 364.99991607666016,
+        "y": 200.11110496520996,
+        "wires": [
+            [
+                "58291c1768957077"
+            ]
+        ]
+    }
+]

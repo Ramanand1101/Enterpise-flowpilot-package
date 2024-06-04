@@ -1,0 +1,56 @@
+[
+    {
+        "id": "6b0747bf21d761ae",
+        "type": "tab",
+        "label": "Content Stack",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3c3f429fdd50638d",
+        "type": "debug",
+        "z": "6b0747bf21d761ae",
+        "name": "debug 269",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 593.111083984375,
+        "y": 201.11109924316406,
+        "wires": []
+    },
+    {
+        "id": "2afdf788ad20624d",
+        "type": "inject",
+        "z": "6b0747bf21d761ae",
+        "name": "Content Stack",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello from Content Stack",
+        "payloadType": "str",
+        "x": 268.99991607666016,
+        "y": 174.11110496520996,
+        "wires": [
+            [
+                "3c3f429fdd50638d"
+            ]
+        ]
+    }
+]

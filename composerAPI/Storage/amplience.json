@@ -1,0 +1,56 @@
+[
+    {
+        "id": "c26dbfb05a894180",
+        "type": "tab",
+        "label": "Amplience",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7b5a50c2eb6c4236",
+        "type": "debug",
+        "z": "c26dbfb05a894180",
+        "name": "debug 270",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 609.111083984375,
+        "y": 252.11109924316406,
+        "wires": []
+    },
+    {
+        "id": "dc38e56b0f5291c7",
+        "type": "inject",
+        "z": "c26dbfb05a894180",
+        "name": "Amplience",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello from Amplience",
+        "payloadType": "str",
+        "x": 274.99991607666016,
+        "y": 225.11110496520996,
+        "wires": [
+            [
+                "7b5a50c2eb6c4236"
+            ]
+        ]
+    }
+]

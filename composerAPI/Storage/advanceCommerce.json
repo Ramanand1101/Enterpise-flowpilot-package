@@ -1,0 +1,56 @@
+[
+    {
+        "id": "6dbe44b29dc4a804",
+        "type": "tab",
+        "label": "Advance Commerce",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0f875278158b419f",
+        "type": "debug",
+        "z": "6dbe44b29dc4a804",
+        "name": "debug 268",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 722.1111068725586,
+        "y": 228.11109352111816,
+        "wires": []
+    },
+    {
+        "id": "be6d9f58261f4146",
+        "type": "inject",
+        "z": "6dbe44b29dc4a804",
+        "name": "Advance Commerce",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello from Advance Commerce",
+        "payloadType": "str",
+        "x": 417.99993896484375,
+        "y": 201.11109924316406,
+        "wires": [
+            [
+                "0f875278158b419f"
+            ]
+        ]
+    }
+]

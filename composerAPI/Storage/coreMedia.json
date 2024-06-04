@@ -1,0 +1,56 @@
+[
+    {
+        "id": "e08a97278ce2f5ed",
+        "type": "tab",
+        "label": "Core Media",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f65310e27189b9a0",
+        "type": "debug",
+        "z": "e08a97278ce2f5ed",
+        "name": "debug 273",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 677.111083984375,
+        "y": 233.11109924316406,
+        "wires": []
+    },
+    {
+        "id": "2a1d7403771833f5",
+        "type": "inject",
+        "z": "e08a97278ce2f5ed",
+        "name": "Core Media",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello from Core Media",
+        "payloadType": "str",
+        "x": 352.99991607666016,
+        "y": 206.11110496520996,
+        "wires": [
+            [
+                "f65310e27189b9a0"
+            ]
+        ]
+    }
+]

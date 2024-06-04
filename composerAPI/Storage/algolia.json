@@ -1,0 +1,55 @@
+[
+    {
+        "id": "a8c3b52e434000a6",
+        "type": "tab",
+        "label": "Algolia",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4ec1214b05ca33fa",
+        "type": "debug",
+        "z": "a8c3b52e434000a6",
+        "name": "debug 266",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 715.2222595214844,
+        "y": 269.99999237060547,
+        "wires": []
+    },
+    {
+        "id": "980f52664b0b8c9b",
+        "type": "inject",
+        "z": "a8c3b52e434000a6",
+        "name": "Elastic Path",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello from Elastic Path",
+        "payloadType": "str",
+        "x": 542.1111145019531,
+        "y": 249.99999237060547,
+        "wires": [
+            [
+                "4ec1214b05ca33fa"
+            ]
+        ]
+    }
+]

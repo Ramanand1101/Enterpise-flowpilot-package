@@ -1,0 +1,17 @@
+{
+  "name": "node-red-enterprise-template",
+  "version": "1.0.0",
+  "description": "This is a enterprise-composer Toolbar",
+  "keywords": [],
+  "author": "",
+  "license": "Apache-2.0",
+  "node-red": {
+    "plugins": {
+      "composerTool": "composerTool.html"
+    }
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "jsdom": "^24.1.0"
+  }
+}

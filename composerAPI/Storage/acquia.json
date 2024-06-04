@@ -1,0 +1,56 @@
+[
+    {
+        "id": "69ed32e7e2d3b771",
+        "type": "tab",
+        "label": "Acquia",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "8536e8ba804f1455",
+        "type": "debug",
+        "z": "69ed32e7e2d3b771",
+        "name": "debug 271",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 667.1111373901367,
+        "y": 248.11109924316406,
+        "wires": []
+    },
+    {
+        "id": "3173a5f676a5ecbd",
+        "type": "inject",
+        "z": "69ed32e7e2d3b771",
+        "name": "Acquia",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello from Amplience",
+        "payloadType": "str",
+        "x": 322.9999694824219,
+        "y": 221.11110496520996,
+        "wires": [
+            [
+                "8536e8ba804f1455"
+            ]
+        ]
+    }
+]

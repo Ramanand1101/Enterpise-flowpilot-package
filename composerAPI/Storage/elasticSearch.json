@@ -1,0 +1,55 @@
+[
+    {
+        "id": "81cf13528ada76bc",
+        "type": "tab",
+        "label": "Elastic Search",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2863660281c36f67",
+        "type": "debug",
+        "z": "81cf13528ada76bc",
+        "name": "debug 267",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 618.111083984375,
+        "y": 266.1111145019531,
+        "wires": []
+    },
+    {
+        "id": "fd25df9a69fa0d28",
+        "type": "inject",
+        "z": "81cf13528ada76bc",
+        "name": "Elastic Search",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hello from Elastic Search",
+        "payloadType": "str",
+        "x": 444.99993896484375,
+        "y": 246.11111450195312,
+        "wires": [
+            [
+                "2863660281c36f67"
+            ]
+        ]
+    }
+]

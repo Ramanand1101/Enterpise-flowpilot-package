@@ -1,0 +1,56 @@
+[
+    {
+        "id": "8eb75dd3499fac39",
+        "type": "tab",
+        "label": "Elastic Path",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0a43459a06442c00",
+        "type": "inject",
+        "z": "8eb75dd3499fac39",
+        "name": "Elastic Path",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "hello from Elastic Path",
+        "payloadType": "str",
+        "x": 376.1692810058594,
+        "y": 145.1666717529297,
+        "wires": [
+            [
+                "fa16eb19b76231fd"
+            ]
+        ]
+    },
+    {
+        "id": "fa16eb19b76231fd",
+        "type": "debug",
+        "z": "8eb75dd3499fac39",
+        "name": "debug 270",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 659.2804260253906,
+        "y": 187.1666717529297,
+        "wires": []
+    }
+]

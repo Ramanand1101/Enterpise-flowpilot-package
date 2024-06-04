@@ -1,0 +1,1116 @@
+<script type="text/javascript">
+  (function () {
+    const base_URL = "http://localhost:3000";
+    // Plugin definition
+    RED.plugins.registerPlugin("example-index-plugin", {
+      onadd: function () {
+        // Create a div element and set its CSS properties
+        var content = $("<div>").css({
+          position: "relative",
+          margin: "5px",
+          borderRadius: "10px",
+          padding: "10px",
+          backgroundColor: "rgb(37, 45, 49)",
+          color: "white",
+          textAlign: "center",
+          paddingTop: "30px",
+          maxWidth: "600px" /* Set maximum width */,
+          marginLeft: "auto" /* Center content horizontally */,
+          marginRight: "auto" /* Center content horizontally */,
+        });
+
+        // Add media query for responsiveness
+        content.css("@media (max-width: 768px)", {
+          padding: "5px",
+          paddingTop: "20px",
+        });
+
+        // Set the class name
+        content.addClass("red-ui-sidebar-index");
+
+        // Function to show alert
+        function showAlert(message) {
+          alert(message);
+        }
+        // Create HTML content for welcome message and tagline
+        content.append(
+          "<h2 style='font-family: Arial, sans-serif; margin-top: 10px; color: rgb(255, 212, 59); margin-bottom: 10px;'>Welcome to UniversalCommerce <br> A New-Generation Toolbar!</h2>"
+        );
+
+        content.append(
+          "<p style='font-size: 16px; '>Your Productivity in your hand.</p>"
+        );
+
+        var parentDiv = $("<div>").css({
+          width: "80%",
+          margin: "auto",
+          borderRadius: "10px",
+          display: "flex",
+          flexDirection: "column",
+          fontSize: "15px",
+          alignItems: "center",
+          border:
+            "2px solid rgba(255, 255, 255, 0.1)" /* Increased transparency for border */,
+          marginTop: "50px",
+          color: "white",
+          boxShadow:
+            "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px",
+          background:
+            "rgba(255, 255, 255, 0.3)" /* White background with increased transparency */,
+          backdropFilter: "blur(5px)" /* Frosted glass effect */,
+          padding: "20px" /* Padding to contain content */,
+        });
+        // Create three divs for lines of text and buttons
+        var commerceDiv = $("<div>").css({
+          width: "100%",
+          margin: "10px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "center",
+        });
+        var contentDiv = $("<div>").css({
+          width: "100%",
+          margin: "10px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "center",
+        });
+        var searchDiv = $("<div>").css({
+          width: "100%",
+          margin: "10px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "center",
+        });
+
+        // Create three lines of text
+        var vLine = $("<p>")
+          .text("Import Commerce Flow")
+          .css({
+              "margin-bottom": "20px",
+              "font-weight": "bold",
+              "font-size": "16px" // Adjust font size as needed
+          });
+        var sLine = $("<p>")
+          .text("Import CMS Flow ")
+          .css({
+              "margin-bottom": "20px",
+              "font-weight": "bold",
+              "font-size": "16px" // Adjust font size as needed
+          });
+        var tLine = $("<p>")
+          .text("Import Search Flow ")
+          .css({
+              "margin-bottom": "20px",
+              "font-weight": "bold",
+              "font-size": "16px" // Adjust font size as needed
+          });
+
+        // Append lines of text to their corresponding divs
+        commerceDiv.append(vLine);
+        contentDiv.append(sLine);
+        searchDiv.append(tLine);
+
+        var commerceToolButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "rgb(15, 29, 68)",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/commerceToolFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("commerceTool flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("CommerceTool flow Imported Successfully", data);
+                showAlert("CommerceTool flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing CommerceTool flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgcommerceTool = $("<img>").attr({
+          src: "https://pipedream.com/s.v0/app_mn5hDK/logo/orig", // Replace with the URL of the commerceTool logo
+          alt: "commerceTool Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        commerceToolButton.append(imgcommerceTool);
+        commerceToolButton.append(
+          "<span style='margin-left: 5px;'>Commerce-Tool</span>"
+        ); // Append text after the image
+
+        var hclCommerceButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "white",
+            color: "rgb(15, 29, 68)",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/hclCommerceFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("HCL-Commerce flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing flowData  : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("HCL-Commerce flow Imported Successfully", data);
+                showAlert("HCL-Commerce flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing HCL commerce flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imghclCommerce = $("<img>").attr({
+          src: "https://www.airslate.com/preview/explorebots/commerce/hcl-commerce.svg", // Replace with the URL of the hclCommerce logo
+          alt: "hclCommerce Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        hclCommerceButton.append(imghclCommerce);
+        hclCommerceButton.append(
+          "<span style='margin-left: 5px;'>HCL-Commerce</span>"
+        ); // Append text after the image
+
+        var emporixButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "white",
+            border: "2px solid black",
+            color: "black",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/emporixFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("Emporix flow imported successfully.");
+                  } catch (error) {
+                    showAlert("Error importing flowData : " + error.message);
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("Emporix Imported Successfully", data);
+                showAlert("Emporix flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing Emporix flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgEmporix = $("<img>").attr({
+          src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHHhlCIqa74VbPYDrtFvKYqTW2d_YfILZnYw&s", // Replace with the URL of the emporix logo
+          alt: "Emporix Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        emporixButton.append(imgEmporix);
+        emporixButton.append("<span style='margin-left: 5px;'>Emporix</span>"); // Append text after the image
+
+        var elasticPathButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "white",
+            border: "2px solid black",
+            color: "black",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/elasticPathFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("Elastic Path flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("ElasticPath Imported Successfully", data);
+                showAlert("Elastic Path flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing ElasticPath flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgelasticPath = $("<img>").attr({
+          src: "data:image/png;base64,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", // Replace with the URL of the elasticPath logo
+          alt: "Elastic Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        elasticPathButton.append(imgelasticPath);
+        elasticPathButton.append(
+          "<span style='margin-left: 5px;'>Elastic Path</span>"
+        ); // Append text after the image
+
+        var magento2Button = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "white",
+            color: "rgb(15, 29, 68)",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/magento2Flow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("Magento2 flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("Magento2 flow Imported Successfully", data);
+                showAlert("Magento2 flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing Magento2 flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgmagento2 = $("<img>").attr({
+          src: "https://static.javatpoint.com/tutorial/magento2/images/magento2.png", // Replace with the URL of the magento2 logo
+          alt: "magento2 Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        magento2Button.append(imgmagento2);
+        magento2Button.append(
+          "<span style='margin-left: 5px;'>Magento2</span>"
+        ); // Append text after the image
+
+        /*------------------ All Content Related Code are present below ------------------------------*/
+
+        var contentfulButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "white",
+            border: "2px solid black",
+            color: "black",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/contentfulFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("Contentful flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("Contentful Imported Successfully", data);
+                showAlert("Contentful flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing contentful flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgContentful = $("<img>").attr({
+          src: "data:image/png;base64,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", // Replace with the URL of contentful logo
+          alt: "contentful Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        contentfulButton.append(imgContentful);
+        contentfulButton.append(
+          "<span style='margin-left: 5px;'>Contentful</span>"
+        ); // Append text after the image
+
+        var contentStackButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "white",
+            border: "2px solid black",
+            color: "black",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/contentStackFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("contentStack flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing Error importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("ContentStack Imported Successfully", data);
+                showAlert("ContentStack flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing contentStack flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgcontentStack = $("<img>").attr({
+          src: "https://cabinetm-beta.s3.amazonaws.com/00000163-51db-5cf5-2090-5c4936ef029e.jpg",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        contentStackButton.append(imgcontentStack);
+        contentStackButton.append(
+          "<span style='margin-left: 5px;'>Contentstack</span>"
+        ); // Append text after the image
+
+        var amplienceButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "rgb(0, 22, 33)",
+            border: "2px solid black",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/amplienceFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("Amplience flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing Error importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("Amplience Imported Successfully", data);
+                showAlert("Amplience flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing amplience flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgamplience = $("<img>").attr({
+          src: "https://avatars.githubusercontent.com/u/4487692?s=200&v=4",
+          alt: "amplience Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        amplienceButton.append(imgamplience);
+        amplienceButton.append(
+          "<span style='margin-left: 5px;'>Amplience</span>"
+        ); // Append text after the image
+
+        var acquiaButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "white",
+            border: "2px solid black",
+            color: "rgb(26, 137, 201)",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/acquiaFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("acquia flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing Error importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("Acquia Imported Successfully", data);
+                showAlert("Acquia flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing acquia flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgacquia = $("<img>").attr({
+          src: "https://www.acquia.com/sites/default/files/styles/gradient_header_desktop/public/media/image/2022-09/Acquia%20Edge%20Logo.png?itok=3LNdXH_l",
+          alt: "acquia Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        acquiaButton.append(imgacquia);
+        acquiaButton.append("<span style='margin-left: 5px;'>Acquia</span>"); // Append text after the image
+
+        var siteCoreButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "white",
+            border: "2px solid black",
+            color: "black",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/siteCoreFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("Site Core flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing Error importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("Site Core Imported Successfully", data);
+                showAlert("Site Core flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing siteCore flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgsiteCore = $("<img>").attr({
+          src: "https://img.icons8.com/?size=96&id=63257&format=png",
+          alt: "siteCore Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        siteCoreButton.append(imgsiteCore);
+        siteCoreButton.append(
+          "<span style='margin-left: 5px;'>Sitecore</span>"
+        ); // Append text after the image
+
+        var coreMediaButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "white",
+            border: "2px solid black",
+            color: "black",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/coreMediaFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("coreMedia flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing Error importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("Core Media Imported Successfully", data);
+                showAlert("Core Media flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing coreMedia flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgcoreMedia = $("<img>").attr({
+          src: "https://cmscritic.com/ms-content/uploads/2023/11/coremedia-logo-icon-new.png?format=auto&width=256", // Replace with the URL of the coreMedia logo
+          alt: "coreMedia Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        coreMediaButton.append(imgcoreMedia);
+        coreMediaButton.append(
+          "<span style='margin-left: 5px;'>Coremedia</span>"
+        ); // Append text after the image
+
+        var bloomReachButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "white",
+            border: "2px solid black",
+            color: "black",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/bloomReachFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("BloomReach flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing Error importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("BloomReach Imported Successfully", data);
+                showAlert("BloomReach flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing bloomReach flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgbloomReach = $("<img>").attr({
+          src: "https://scontent.fblr2-2.fna.fbcdn.net/v/t39.30808-1/338472196_204111022261299_6667022457406915464_n.jpg?stp=dst-jpg_p200x200&_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=tNcV7q9P_csQ7kNvgFzjlrh&_nc_ht=scontent.fblr2-2.fna&oh=00_AYCQa-Zn8hmdnJ16IP0j2xzeUUE8Cmha3Mxl0RNM3Rz_gA&oe=66634B4B",
+          alt: "bloomReach Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        bloomReachButton.append(imgbloomReach);
+        bloomReachButton.append(
+          "<span style='margin-left: 5px;'>Bloomreach</span>"
+        ); // Append text after the image
+
+        /* ------------------------------- All search Code are present Below -------------------------------- */
+        var algoliaButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "rgb(0, 59, 247)",
+            color: "white",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/algoliaFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("Algolia flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing Error importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("Algolia Imported Successfully", data);
+                showAlert("Algolia flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing Algolia flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgAlgolia = $("<img>").attr({
+          src: "https://logosandtypes.com/wp-content/uploads/2023/11/Algolia.png", // Replace with the URL of the Algolia logo
+          alt: "Algolia Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        algoliaButton.append(imgAlgolia);
+        algoliaButton.append("<span style='margin-left: 5px;'>Algolia</span>"); // Append text after the image
+
+        var elasticSearchButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "white",
+            color: "black",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/elasticSearchFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("elasticSearch flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing Error importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("Elastic Search Imported Successfully", data);
+                showAlert("Elastic Search flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing elasticSearch flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgelasticSearch = $("<img>").attr({
+          src: "https://redant.com.au/assets/uploads/2019/elasticsearch.png", // Replace with the URL of the elasticSearch logo
+          alt: "elasticSearch Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        elasticSearchButton.append(imgelasticSearch);
+        elasticSearchButton.append(
+          "<span style='margin-left: 5px;'>Elasticsearch</span>"
+        ); // Append text after the image
+
+        // Append buttons to their corresponding
+
+        var advanceCommerceButton = $("<button>")
+          .css({
+            // width:"60%",
+            marginBottom: "5px",
+            padding: "8px 16px",
+            margin: "5px",
+            backgroundColor: "white",
+            color: "rgb(77, 73, 75)",
+            border: "none",
+            borderRadius: "4px",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center", // Align items in the center
+          })
+          .click(function () {
+            fetch(`${base_URL}/advanceCommerceFlow`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                RED.nodes.import(data, function () {
+                  try {
+                    RED.nodes.import(flowData);
+                    showAlert("Advance Commerce flow imported successfully.");
+                  } catch (error) {
+                    showAlert(
+                      "Error importing importing flowData : " + error.message
+                    );
+                  }
+                });
+                // Here you can process the fetched data as needed
+                console.log("Advance Commerce Imported Successfully", data);
+                showAlert("Advance Commerce flow imported successfully.");
+              })
+              .catch((error) => {
+                console.error(
+                  "There was a problem with the fetch operation:",
+                  error
+                );
+                showAlert(
+                  "Error importing advanceCommerce flow : " +
+                    error.message.split(":")[0] +
+                    "!"
+                );
+              });
+          });
+
+        var imgadvanceCommerce = $("<img>").attr({
+          src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbyDQy1XW3SWVJ3L09_i06c68VlcwRIskWc5BVpxtzf4lS0KRzGDwqxhvEZU_e5_-T8wQ&usqp=CAU", // Replace with the URL of the advanceCommerce logo
+          alt: "advanceCommerce Logo",
+          width: "20",
+          height: "20",
+        });
+
+        // Append the image to the button
+        advanceCommerceButton.append(imgadvanceCommerce);
+        advanceCommerceButton.append(
+          "<span style='margin-left: 5px;'>Advancecommerce</span>"
+        ); // Append text after the image
+
+        /* --------------------------- All Append code are here ------------------------------ */
+        commerceDiv.append(
+          commerceToolButton,
+          hclCommerceButton,
+          emporixButton,
+          elasticPathButton,
+          magento2Button
+        );
+        contentDiv.append(
+          contentfulButton,
+          contentStackButton,
+          amplienceButton,
+          acquiaButton,
+          siteCoreButton,
+          coreMediaButton,
+          bloomReachButton
+        );
+
+
+        searchDiv.append(
+          algoliaButton,
+          elasticSearchButton,
+          advanceCommerceButton
+        );
+        parentDiv.append(commerceDiv, contentDiv, searchDiv);
+        // Append divs to content
+        content.append(parentDiv);
+
+        // Register an action to show the sidebar
+        RED.actions.add("core:show-example-index-tab", function () {
+          try {
+            RED.sidebar.show("example-index");
+            showAlert("Tab shown successfully.");
+          } catch (error) {
+            showAlert("Error showing tab: " + error.message);
+          }
+        });
+
+        // Add the tab to the sidebar
+        RED.sidebar.addTab({
+          id: "example-index",
+          name: "FlowPilot", // long name for the menu
+          label: "FlowPilot", // short name for the tab
+          iconClass: "red-ui-tab-icon fa fa-cogs", // pick from https://fontawesome.com/v4.7.0/icons/
+          content: content,
+          action: "core:show-example-index-tab",
+        });
+      },
+    });
+  })();
+</script>
