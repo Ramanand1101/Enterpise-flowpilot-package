@@ -70,8 +70,7 @@ Uploaded files are stored in the `Storage` directory relative to the project roo
 
 ## Contributors
 
-- Ramanand Tiwari - Role
-
+- Ramanand Tiwari 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
