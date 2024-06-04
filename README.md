@@ -1,4 +1,4 @@
-# Express Sidebar Package API
+# Enterprise Package API
 
 This Node.js application provides an API for uploading files and fetching JSON data from files stored on the server. It utilizes Express.js for routing, multer for handling file uploads, cors for enabling cross-origin resource sharing, and fs for file system operations.
 
